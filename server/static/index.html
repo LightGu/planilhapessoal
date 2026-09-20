@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#18332f">
+  <title>Obra Clara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">OC</span><div><strong>Obra Clara</strong><small>Clientes e obras</small></div></div>
+      <div class="sidebar-heading"><span>Clientes</span><button class="icon-button" id="newClientButton" title="Novo cliente"><i data-lucide="user-plus"></i></button></div>
+      <label class="search-box"><i data-lucide="search"></i><input id="clientSearch" type="search" placeholder="Buscar cliente" autocomplete="off"></label>
+      <div id="clientList" class="client-list" aria-live="polite"></div><div class="sidebar-footer"><span id="clientTotal">0 clientes</span></div>
+    </aside>
+    <main class="workspace">
+      <header class="topbar"><button class="icon-button mobile-only" id="menuButton" title="Abrir clientes"><i data-lucide="menu"></i></button><div class="crumb"><span>PAINEL</span><strong id="topbarTitle">Visao geral</strong></div><nav class="view-tabs" aria-label="Visualizacao"><button class="view-tab active" id="worksTab"><i data-lucide="briefcase-business"></i><span>Obras</span></button><button class="view-tab" id="calendarTab"><i data-lucide="calendar-days"></i><span>Calendario</span></button></nav><button class="primary-button" id="newWorkButton" hidden><i data-lucide="plus"></i>Nova obra</button></header>
+      <section id="mainArea" class="content" aria-live="polite"></section>
+    </main>
+  </div>
+  <div id="toastRegion" class="toast-region" aria-live="assertive"></div>
+  <dialog id="clientDialog" class="dialog compact-dialog"><form id="clientForm" method="dialog">
+    <div class="dialog-header"><div><span class="eyebrow">NOVO CADASTRO</span><h2>Adicionar cliente</h2></div><button type="button" class="icon-button close-dialog" title="Fechar"><i data-lucide="x"></i></button></div>
+    <div class="form-field"><label for="clientName">Nome completo</label><input id="clientName" maxlength="200" placeholder="Ex.: Marina Costa" required autofocus><small class="field-error" id="clientError"></small></div>
+    <div class="dialog-actions"><button type="button" class="secondary-button close-dialog">Cancelar</button><button class="primary-button" id="saveClient"><i data-lucide="check"></i>Salvar cliente</button></div>
+  </form></dialog>
+  <dialog id="workDialog" class="dialog work-dialog"><form id="workForm" method="dialog">
+    <div class="dialog-header"><div><span class="eyebrow" id="workDialogEyebrow">NOVA OBRA</span><h2 id="workDialogTitle">Cadastrar obra</h2><p id="workClientLabel"></p></div><button type="button" class="icon-button close-dialog" title="Fechar"><i data-lucide="x"></i></button></div>
+    <div class="dialog-body"><div class="form-grid work-main-fields"><div class="form-field work-name-field"><label for="workName">Nome da obra</label><input id="workName" maxlength="200" placeholder="Ex.: Reforma do apartamento" required></div><div class="form-field"><label for="startDate">Data de inicio</label><input id="startDate" type="date"><small>Opcional</small></div><div class="form-field"><label for="endDate">Data de termino</label><input id="endDate" type="date"><small>Opcional</small></div><div class="form-field full"><label for="workDescription">Descricao</label><textarea id="workDescription" maxlength="5000" rows="3" placeholder="Escopo, endereco ou observacoes importantes"></textarea></div></div>
+      <div class="section-title"><div><h3>Servico</h3><p>Informe o tipo de trabalho para sugerir o percentual de servico.</p></div></div><div class="service-fields"><div class="form-field"><label for="serviceName">Tipo de servico</label><input id="serviceName" maxlength="200" placeholder="Ex.: Instalacao de ar condicionado"></div><div class="form-field percentage-field"><label for="servicePercentage">Percentual</label><div class="percentage-control"><input id="servicePercentage" type="number" min="0" max="100" step="0.01" value="22.12"><span>%</span></div></div><button type="button" class="secondary-button suggest-service" id="suggestServiceButton"><i data-lucide="sparkles"></i>Sugerir</button></div><div id="serviceSuggestion" class="service-suggestion"></div>
+      <div class="section-title"><div><h3>Materiais</h3><p>Pesquise, escolha um produto e adicione a lista.</p></div></div><div id="selectedMaterialsList" class="selected-materials-list"></div><div id="materialsBox" class="materials-editor"></div><div id="budgetPreview" class="budget-preview"></div>
+      <div class="section-title"><div><h3>Imagens</h3><p>JPG, PNG, WebP ou GIF. Ate 8 arquivos.</p></div></div><label class="dropzone" for="workImages"><i data-lucide="image-plus"></i><strong>Selecionar imagens</strong><span>ou arraste os arquivos ate aqui</span><input id="workImages" type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple></label><div id="imagePreview" class="image-preview"></div><small class="field-error" id="workError"></small>
+    </div><div class="dialog-actions"><button type="button" class="secondary-button close-dialog">Cancelar</button><button class="primary-button" id="saveWork"><i data-lucide="check"></i>Salvar obra</button></div>
+  </form></dialog>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script src="app.js"></script>
+</body></html>

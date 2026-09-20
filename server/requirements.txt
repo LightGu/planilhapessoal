@@ -1,0 +1,4 @@
+Flask==3.0.3
+SQLAlchemy==2.0.32
+requests==2.31.0
+Werkzeug==3.0.3
