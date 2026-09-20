@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "planilhapessoal",
+  "compatibility_date": "2026-09-20",
+  "assets": {
+    "directory": "./server/static",
+    "not_found_handling": "single-page-application"
+  }
+}
