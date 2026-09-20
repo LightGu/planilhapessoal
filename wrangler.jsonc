@@ -2,8 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "planilhapessoal",
   "compatibility_date": "2026-09-20",
+  "main": "src/index.js",
+  "vars": { "SUPABASE_URL": "https://wxsrckkgpardsmacacgh.supabase.co" },
   "assets": {
     "directory": "./server/static",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"],
     "not_found_handling": "single-page-application"
   }
 }
